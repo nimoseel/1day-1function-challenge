@@ -11,3 +11,4 @@ function checkDay(a, b) {
 }
 
 checkDay(6, 1);
+//WED
