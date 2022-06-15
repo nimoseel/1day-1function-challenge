@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title></title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('keydown',(e)=>{
+                document.body.innerHTML = `<h1>keydown ${e.code}</h1>`
+            })
+            document.addEventListener('keyup',(e)=>{
+                document.body.innerHTML = `<h1>keyup</h1>`
+            })
+        })
+
+    </script>
+</head>
+<body>
+</body>
+</html>
