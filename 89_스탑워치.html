@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스탑워치</title>
+</head>
+<body>
+    <div>
+        <h2>스탑워치</h2>
+        <h1>
+            <span id="min">00</span>:<span id="sec">00</span>:<span id="tenMilSec">00</span>
+        </h1>
+        <button id="btn_start">START</button>
+        <button id="btn_stop">STOP</button>
+        <button id="btn_reset">RESET</button>
+    </div>
+
+    <script>
+        let min = 0;
+        let sec = 0;
+        let tenMilSec = 0;
+
+        const appendMin = document.getElementById("min");
+        const appendSec = document.getElementById("sec");
+        const appendTenMilSec = document.getElementById("tenMilSec");
+        const btnStart = document.getElementById("btn_start");
+        const btnStop = document.getElementById("btn_stop");
+        const btnReset = document.getElementById("btn_reset");
+        let intervalId;
+
+        btnStart.onclick = function(){
+            clearInterval(intervalId);
+            intervalId = setInterval(stopWatch, 10);
+        };
+
+        btnStop.onclick = function(){
+            clearInterval(intervalId);
+        };
+
+        btnReset.onclick = function(){
+            clearInterval(intervalId);
+            tenMilSec = 0;
+            sec = 0;
+            min = 0;
+
+            appendTenMilSec.textContent = "00";
+            appendSec.textContent = "00";
+            appendMin.textContent = "00";
+        };
+
+        function stopWatch(){
+            tenMilSec++;
+            appendTenMilSec.textContent = tenMilSec > 9 ? tenMilSec : '0' + tenMilSec;
+
+            if(tenMilSec > 99){
+                sec++;
+                appendSec.textContent = sec > 9 ? sec : '0' + sec;
+                tenMilSec = 0;
+                appendTenMilSec.textContent = "00";
+            };
+            if(sec > 59){
+                min++;
+                appendMin.textContent = min > 9 ? min : '0' + min;
+                sec = 0;
+                appendSec.textContent = "00";
+            }
+        }
+
+    </script>
+</body>
+</html>
