@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+
+    <script>
+        // let elements = [];
+
+        // for(let i = 0; i < 100; i++){
+        //     const el = document.createElement('div');
+        //     elements.push(el);
+        // }
+
+        // const cont = document.querySelectorAll('.container');
+
+        // for(let i = 0; i<cont.length; i++){
+        //     for(let j = 0; j<elements.length; j++){
+        //         cont[i].appendChild(elements[j].cloneNode(true)); 
+        //          배열은 참조타입 - 값 자체가 복사되는 것이 아니기에 노드를 복사해줘야함.
+        //     }
+        // }
+
+        const frag = document.createDocumentFragment();
+
+        for(let i = 0; i < 100; i++){
+            const el = document.createElement('div');
+            frag.appendChild(el);
+            // 배열에 생성한 요소를 등록할 필요 없이 가상돔에 바로 등록
+        }
+
+        const cont = document.querySelectorAll('.container');
+
+        for(let i = 0; i<cont.length; i++){
+            cont[i].appendChild(frag.cloneNode(true));
+            // frag 역시 참조타입이기에 clone 하여 값 자체를 복사함
+        }
+
+        // DocumentFragment를 DOM에 추가할 때, DocumentFragment의 자식노드는 더 이상 생성한 메모리 상의 위치에 존재하지 않음. 만약 이를 유지 시키고 싶다면 cloneNode를 통해 복제
+    </script>
+</body>
+</html>
