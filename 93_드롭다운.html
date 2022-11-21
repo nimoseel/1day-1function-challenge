@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title></title>
+</head>
+<body>
+    <select name="" id="select">
+        <option value="">1번</option>
+        <option value="">2번</option>
+        <option value="">3번</option>
+        <option value="">4번</option>
+    </select>
+    <p id="result">선택 : 1번</p>
+
+    <script>
+        const select = document.querySelector('#select')
+        const p = document.querySelector('#result')
+
+        select.addEventListener('change',(e)=>{
+            const options = event.currentTarget.options
+            const index = options.selectedIndex
+            p.textContent = `선택 : ${options[index].textContent}`
+        })
+    </script>
+</body>
+</html>
